@@ -1,4 +1,5 @@
 <?php
+
 include('parts/head.php');
 echo '<body>';
 include('parts/menu.php');
@@ -11,11 +12,11 @@ $credentials = [
 ?>
 
 <br>
-
+<div class="container">
 <?php
 	if(!check('login') || !check('pass')) {
 ?>
-<div class="container">
+
 	<form action="login.php" method="POST">
 		<!-- LOGIN -->
 		<div class="form-group row">
@@ -56,7 +57,13 @@ $credentials = [
 			<?php
 			$checked = checkCredentials($credentials, $_POST);
 			if ($checked['login'] && $checked['pass']) {
+				$login = $credentials['login'];
+				$pass = $credentials['pass'];
 				// GOOD
+				//* Create a coookie
+				setcookie('login', $login, time()+3600);
+				setcookie('pass', $pass, time()+(7*24*3600), "/", "example.com", false, true);
+				$_SESSION['login'] = $login;
 				?>
 				<div class="alert alert-success" role="alert">
 					<strong>Well done!</strong> Success.
@@ -82,7 +89,12 @@ $credentials = [
 			?>
 		</div>
 		<div class="row">
-		<a href="login.php"><button class="btn btn-info">Retour</button></a>
+			<div class="col-3">
+				<a href="login.php"><button class="btn btn-info">Back</button></a>
+			</div>
+			<div class="col-3 offset-6">
+				<a href="index.php"><button class="btn btn-primary">Home</button></a>
+			</div>
 		</div>
 		<?php
 	}

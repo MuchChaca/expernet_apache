@@ -101,9 +101,9 @@ $credentials = [
 				$res = [
 					"pseudo"	=> htmlspecialchars($_POST['pseudo']),
 					"login"	=> htmlspecialchars($_POST['login']),
-					"sex"		=> htmlspecialchars(($_POST['sex'] == 'f' ? 'Female' : 'Male')),
-					"city"	=> htmlspecialchars(getCity($_POST['city'])),
-					"agree"	=> htmlspecialchars(($_POST['agree'] ? 'yes' : 'no')),
+					"sex"		=> ($_POST['sex'] == 'f' ? 'Female' : 'Male'),
+					"city"	=> getCity($_POST['city']),
+					"agree"	=> ($_POST['agree'] ? 'yes' : 'no'),
 				];
 				
 				echo '$res = ';	
