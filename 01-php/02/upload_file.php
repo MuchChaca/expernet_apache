@@ -23,8 +23,8 @@ include('parts/menu.php');
 		//========  Form is filled then ``$_FILES['file-input']``  ========//
 		//=> Check for errors of upload
 		// $fIn = $_FILES['file-input'];
-		print_r($_FILES);
-		if($_FILES["file-input"]['error'] == 0){
+		// print_r($_FILES); // DEBUG
+		if(!$_FILES["file-input"]['error']){
 			// check for size
 			if($_FILES['file-input']["size"] <= 5000000) {
 				// file info fetching
@@ -34,6 +34,11 @@ include('parts/menu.php');
 				// check for right etx
 				if ($ext == "jpg") { //=> we want this one
 					$dir = "img";
+					// check dir
+					if (!is_dir($dir)) {
+						// create if doesn't exists
+						mkdir($dir, 0777, true);
+					}
 					// upload file
 					if(move_uploaded_file($_FILES['file-input']['tmp_name'], ($dir.'/img_'.time().'.jpg'))){
 						// Success !!
@@ -42,20 +47,20 @@ include('parts/menu.php');
 						echo '</div>';
 					} else {
 						//! Error handling for global errors
-						echo '<div class="alert alert-error" role="alert">';
+						echo '<div class="alert alert-danger" role="alert">';
 							echo '<strong>[ERROR] Something went wrong</strong> ';
 						echo '</div>';
 					}
 				}
 			} else {
 				//! Error handling for heavy files
-				echo '<div class="alert alert-error" role="alert">';
+				echo '<div class="alert alert-danger" role="alert">';
 					echo '<strong>[ERROR] File too big (5MB max)</strong> ';
 				echo '</div>';
 			}
 		} else {
 			//! Error handling for global errors
-			echo '<div class="alert alert-error" role="alert">';
+			echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>[ERROR] Could not find the file</strong> ';
 			echo '</div>';
 		}

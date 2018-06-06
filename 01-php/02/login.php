@@ -7,7 +7,7 @@ include('parts/menu.php');
 $credentials = [
 	"login" => "root",
 	"pass" => "root",
-]
+];
 
 ?>
 
