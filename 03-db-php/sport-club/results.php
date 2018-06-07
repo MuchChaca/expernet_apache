@@ -24,7 +24,6 @@ while($resMB = $qMB->fetch()){
 			ORDER BY comp_date;');
 
 	// show results for the given member
-	// while($resRS = $qRS->fetch()){
 	echo '<table class="table table-bordered">';
 		echo '<thead class="thead-dark">
 			<tr>
@@ -35,6 +34,7 @@ while($resMB = $qMB->fetch()){
 			</tr>
 		</thead>';
 		echo '<tbody class="table-striped">';
+			// populate table
 			while($resRS = $qRS->fetch()){
 				echo '<tr>';
 					echo '<td>' . $resRS['comp_nom'] . '</td>';
@@ -43,17 +43,16 @@ while($resMB = $qMB->fetch()){
 					echo '<td>' . $resRS['res_num_place'] . '</td>';
 				echo '</tr>';
 			}
+
+			$qRS->closeCursor();
+
 		echo '</tbody>';
 	echo '<table>';
+	
 	echo '<br><hr><br>';
 }
 
-
-
-
-
-
-
+$qMB->closeCursor();
 
 ?>
 
