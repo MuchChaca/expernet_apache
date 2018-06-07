@@ -33,6 +33,7 @@ echo '<table>';
 
 
 
-</div> <!-- //CONTAINER -->
+</div>
+<!-- //CONTAINER -->
 </body>
 </html>

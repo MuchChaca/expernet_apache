@@ -24,6 +24,8 @@ WHERE sp_id = 2;
 SELECT *
 FROM membre
 WHERE mb_nom REGEXP '^(g|G)[[:alpha:]]*';
+-- or
+-- WHERE mb_nom LIKE "g%" OR mb_nom LIKE "G%";
 
 -- liste des compétitions au dernier trimestre 2018
 SELECT *
