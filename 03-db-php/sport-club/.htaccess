@@ -1,0 +1,3 @@
+SetEnv DB_HOST 127.0.0.1
+SetEnv DB_USER root
+SetEnv DB_PASS root

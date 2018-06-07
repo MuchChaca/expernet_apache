@@ -62,8 +62,71 @@ SELECT mb_nom, mb_prenom, YEAR(mb_dt_naiss) 'Année naissance'
 FROM membre;
 
 
+-- age des membres
+SELECT mb_nom, mb_prenom, YEAR(NOW())-YEAR(mb_dt_naiss) 'age'
+FROM membre;
+
+-- caps nom de famille
+SELECT UPPER(mb_nom) 'nom', mb_prenom 'prenom'
+FROM membre;
 
 
+-- resultats aux compétitions: date compet, nom prenom membre, num place
+-- avec inner join
+SELECT comp_date 'Date compétition', comp_nom 'Nom compétition', res_num_place 'Résultat', mb_nom 'Nom membre', mb_prenom 'Prénom membre'
+FROM competition c
+INNER JOIN resultat r
+	ON c.comp_num = r.comp_num
+INNER JOIN membre m
+	ON m.mb_num = r.mb_num
+ORDER BY comp_nom;
+
+-- commentaire sur la place
+-- resultats aux compétitions: date compet, nom prenom membre, num place
+-- avec inner join
+SELECT comp_date 'Date compétition', comp_nom 'Nom compétition', res_num_place 'Résultat', mb_nom 'Nom membre', mb_prenom 'Prénom membre', 
+	CASE res_num_place
+		WHEN 1 THEN 'Premier! GG!'
+		WHEN 2 THEN 'Deuxieme! Close!'
+		WHEN 3 THEN 'Troisième! Podium! Nice!'
+		ELSE 'Bien de finir tout court'
+	END AS 'Commentaire'
+FROM competition c
+INNER JOIN resultat r
+	ON c.comp_num = r.comp_num
+INNER JOIN membre m
+	ON m.mb_num = r.mb_num
+ORDER BY comp_nom;
+-- alternative w/ if
+SELECT comp_date 'Date compétition', comp_nom 'Nom compétition', res_num_place 'Résultat', mb_nom 'Nom membre', mb_prenom 'Prénom membre', 
+	IF(res_num_place=1, 'GG', 'Mol') AS 'Commentaire'
+FROM competition c
+INNER JOIN resultat r
+	ON c.comp_num = r.comp_num
+INNER JOIN membre m
+	ON m.mb_num = r.mb_num
+ORDER BY comp_nom;
+
+-- count
+SELECT COUNT(*) 'Nombre compétitions'
+FROM competition;
+
+-- nombre de memvres par sport
+SELECT s.sp_id, sp_libelle, COUNT(*) 'Nombre Membre'
+FROM membre m
+INNER JOIN sport s
+	ON s.sp_id = m.sp_id
+GROUP BY s.sp_id;
+
+
+-- chercher les num de membres qui ont participés plus d'une fois à un compet'
+-- nombre de membres par sport + de 1fois
+SELECT m.mb_num, mb_nom, COUNT(res_num_place) 'nb_particip'
+FROM resultat r
+INNER JOIN membre m
+	ON m.mb_num = r.mb_num
+GROUP BY m.mb_num
+HAVING nb_particip > 1;
 
 
 
