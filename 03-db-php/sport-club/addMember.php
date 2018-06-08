@@ -13,6 +13,10 @@ $sports = findAllSports($db);
 // print_r($sports);
 // echo '</pre>';
 ?>
+<h1>Add a member</h1>
+<hr>
+<br>
+<br>
 <?php if(
 		!isset($_POST['mb-lname']) ||
 		!isset($_POST['mb-fname']) ||

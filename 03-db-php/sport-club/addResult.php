@@ -16,7 +16,10 @@ $msg = [
 	"class" => "alert alert-default",
 ];
 ?>
-
+<h1>Register a result for a competition</h1>
+<hr>
+<br>
+<br>
 <?php if(
 	empty($_POST['res-member']) ||
 	empty($_POST['res-cpt']) ||
