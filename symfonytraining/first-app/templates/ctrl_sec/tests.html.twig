@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<table style='border:1px solid black;width:100%'>
+	{% for u in data %}
+		<tr style='color:white;background-color:{{cycle(['gold', 'brown', 'dark-brow'],loop.index0)}}'>
+			<td> {{ u.lname }} </td>
+			<td> {{ u.fname }} </td>
+			<td> {{ u.phone }} </td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
