@@ -9,11 +9,15 @@ class Pokemon{
 	private $_type;
 	private $_lvl;
 
-	public function __construct($name = null, $hp = 100, $type = null, $lvl = 1) {
-		$this->_name = $name;
-		$this->_hp = $hp;
-		$this->_type = $type;
-		$this->_lvl = $lvl;
+	// constants
+	const HP_NORMAL	= 100;
+	const HP_RARE		= 180;
+
+	public function __construct($name = "", $hp = Pokemon::HP_NORMAL, $type = "", $lvl = 1) {
+		$this->setName($name);
+		$this->initHp($hp);
+		$this->setType($type);
+		$this->setLvl($lvl);
 	}
 
 	public function attack() {
@@ -30,6 +34,17 @@ class Pokemon{
 		$this->setLvl($this->lvl() + $nbLvl);
 	}
 
+	/**
+	 * initHp initialize the HP of the Pokemon
+	 * @param int HP must be a valid const: [Pokemon::HP_NORMAL, Pokemon::HP_RARE]
+	 * @return void
+	 */
+	public function initHp(int $hp) {
+		// check if the hp is one of the valid const
+		if(in_array($hp, [self::HP_NORMAL, self::HP_RARE])){
+			$this->setHp($hp);
+		}
+	}
 
 	//===========  - GETTERS & SETTERS -  ===========//
 
@@ -37,7 +52,7 @@ class Pokemon{
 		return $this->_name;
 	}
 
-	public function hp(): string {
+	public function hp(): int {
 		return $this->_hp;
 	}
 
@@ -58,12 +73,12 @@ class Pokemon{
 		}
 	}
 
-	public function setHp(string $hp) {
+	public function setHp(int $hp) {
 		// string only
-		if(is_string($hp)){
+		if(is_int($hp)){
 			$this->_hp = $hp;
 		} else {
-			throw new InvalidArgumentException('Expecting parameter to be string.');
+			throw new InvalidArgumentException('Expecting parameter to be int.');
 		}
 	}
 

@@ -1,0 +1,6 @@
+# Keep this one
+# add it to ``.gitignore`` in real use case
+SetEnv DB_HOST 127.0.0.1
+SetEnv DB_PORT 3306
+SetEnv DB_USER root
+SetEnv DB_PASS root

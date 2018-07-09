@@ -4,7 +4,7 @@ require_once('m/Pokemon.php');
 
 
 // instanciation
-$rondoudou = new Pokemon();
+$rondoudou = new Pokemon('Rondoudou');
 
 // call method attack()
 $rondoudou->attack();
@@ -16,6 +16,7 @@ echo "<p>level : ".$rondoudou->lvl()."</p>";
 $rondoudou->levelUp();
 // print new level
 echo "<p>level : ".$rondoudou->lvl()."</p>";
+echo "<p>nom : ".$rondoudou->name()."</p>";
 
 
 
