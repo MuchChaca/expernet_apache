@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="container">
+
+{{ form_start(form) }}
+{{ form_widget(form.name, {'attr':{'class':'form-control'}} ) }}
+{{ form_widget(form.race, {'attr':{'class':'form-control'}} ) }}
+{{ form_widget(form.create, {'attr':{'class':'btn btn-primary'}} ) }}
+{{ form_end(form) }}
+
+</div>
+
+{% endblock %}

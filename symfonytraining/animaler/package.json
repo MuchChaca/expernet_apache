@@ -1,0 +1,20 @@
+{
+  "name": "animaler",
+  "version": "1.0.0",
+  "description": "exercise for test, expernet",
+  "main": "public/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.2",
+    "popper.js": "^1.14.3",
+    "proper": "^0.5.1",
+    "sass-loader": "^7.0.3"
+  }
+}

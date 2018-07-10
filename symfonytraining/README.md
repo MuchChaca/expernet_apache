@@ -23,9 +23,19 @@ symfony-start
 composer require annotations
 ```
 
+## Symfony assets
+```bash
+composer require symfony/asset
+```
+
 ## Install ``twig`` - Template engine
 ```bash
 composer require twig
+```
+
+## Install forms
+```bash
+composer require symfony/form
 ```
 
 ## Install generator
@@ -50,3 +60,15 @@ composer require symfony/profiler-pack
 * ``@Route`` https://symfony.com/doc/current/routing.html
 * ``@Method``
 * public
+
+
+## NPM stuff
+```bash
+npm init
+npm install webpack
+npm install bootstrap
+npm install jquery
+npm install popper.js
+```
+* [doc](https://symfony.com/doc/current/frontend/encore/installation.html)
+* https://symfony.com/doc/current/frontend/encore/bootstrap.html
