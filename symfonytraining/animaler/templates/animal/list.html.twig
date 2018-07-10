@@ -7,11 +7,14 @@
 </style>
 
 <div class="example-wrapper">
-	{# TODO #}
-	<ul>
-		{% for u in data %}
-			<li>{{ u.fname }} {{ u.lName }} {{ u.phone }}</li>
-		{% endfor %}
-	</ul>
+    All animals:
+    <ul>
+    {{success}}
+    {% for a in animals %}
+        <li><b>{{a.name}}</li>
+    {% endfor %}
+    {# {{animals}} #}
+    </ul>
+
 </div>
 {% endblock %}
